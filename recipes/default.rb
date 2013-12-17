@@ -4,4 +4,4 @@ end
 
 node.packages.map{|p| package p}
 
-%w( deployer sshd dump ).map {|r| include_recipe "amoeba_basenode::#{r}"}
+%w( deployer dump ).map {|r| include_recipe "amoeba_basenode::#{r}"}

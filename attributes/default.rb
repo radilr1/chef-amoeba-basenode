@@ -1,8 +1,8 @@
 default.set_fqdn = node.name
 
-node.default_unless['deployment']['user']  = 'deploy'
-node.default_unless['deployment']['group'] = 'deploy'
-node.default_unless['deployment']['home']  = '/home/deploy'
+node.normal['deployment']['user']  = 'deploy'
+node.normal['deployment']['group'] = 'deploy'
+node.normal['deployment']['home']  = '/home/deploy'
 
 node.default['tz'] = 'UTC'
 node.default['packages'] = %w(htop atop screen imagemagick vim)
