@@ -1,19 +1,20 @@
 default.set_fqdn = node.name
 
-node.normal['deployment']['user']  = 'deploy'
-node.normal['deployment']['group'] = 'deploy'
-node.normal['deployment']['home']  = '/home/deploy'
+node.default['deployment']['user']  = 'deploy'
+node.default['deployment']['group'] = 'deploy'
+node.default['deployment']['home']  = '/home/deploy'
 
 node.default['tz'] = 'UTC'
 node.default['packages'] = %w(htop atop screen imagemagick vim)
 node.default['authorization']['sudo']['sudoers_defaults'] = []
 node.default['authorization']['sudo']['groups'] = %w(wheel admin)
 node.default['authorization']['sudo']['users'] = [ node.deployment.user ]
-node.default['authorization']['sudo']['agent_forwarding'] = true
-node.default['authorization']['sudo']['include_sudoers_d'] = true
-node.default['monit']['poll_period'] = 30
-node.default['monit']['poll_start_delay'] = false
-node.default['build_essential']['compiletime'] = true
+
+node.override['authorization']['sudo']['agent_forwarding'] = true
+node.override['authorization']['sudo']['include_sudoers_d'] = true
+node.override['monit']['poll_period'] = 30
+node.override['monit']['poll_start_delay'] = false
+node.override['build_essential']['compiletime'] = true
 
 node.override['openssh']['client']['hash_known_hosts'] = 'yes'
 node.override['openssh']['client']['strict_host_key_checking'] = 'no'
