@@ -6,6 +6,7 @@ node.default['deployment']['home']  = '/home/deploy'
 
 node.default['tz'] = 'UTC'
 node.default['packages'] = %w(htop atop screen imagemagick vim)
+node.default['apt_update'] = true
 node.default['authorization']['sudo']['sudoers_defaults'] = []
 node.default['authorization']['sudo']['groups'] = %w(wheel admin)
 node.default['authorization']['sudo']['users'] = [ node.deployment.user ]
