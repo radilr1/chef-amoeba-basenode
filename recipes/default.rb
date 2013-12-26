@@ -14,5 +14,5 @@ node[:packages].map{ |p| package p}
 # Setup deployer user
 include_recipe 'amoeba_basenode::deployer'
 
-# Dump node attributes to json file (so we have some known node state)
-dump_node_file("#{node[:deployment][:home]}/node.json")
+# Dump the node (must be after the deployer is setup)
+include_recipe 'amoeba_basenode::dump'
