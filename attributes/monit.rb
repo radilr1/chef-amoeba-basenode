@@ -28,6 +28,7 @@ override["monit"]["mail"] = {
   :message  => "Monit $ACTION $SERVICE at $DATE on $HOST,\n\n$DESCRIPTION\n\nDutifully,\nMonit",
   :timeout  => 30
 }
+override["monit"]["default_monitrc_configs"] = ["load", "ssh"]
 # Used by upstart script
 override[:monit][:bin_file] =  "/usr/sbin/monit"
 override[:monit][:monitrc_file] = "/etc/monit/monitrc"
