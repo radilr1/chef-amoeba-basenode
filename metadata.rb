@@ -15,14 +15,14 @@ depends "swap"
 # These are configured in the recipes/base wrapper
 depends "openssh"
 depends "ohai"
-depends "locale"
+depends "locale", ">= 0.1.0" # must use version from github: 'fnordfish/chef-locale'
 depends "timezone-ii"
 depends "hostname"
 depends "build-essential"
 depends "git"
 depends "sudo"
-depends "rvm"
-depends "monit"
+depends "rvm", ">= 0.9.1" # must use version from github: 'fnichol/chef-rvm'
+depends "monit", ">= 1.5.0" # must use version from github: 'phlipper/chef-monit'
 
 attribute "swapfile_size",
   :description => "The size of the system swap (integer in MB).",
@@ -38,3 +38,33 @@ attribute "deployment/provider",
   :description => "The provider to use (from AmoebaDeployTools). Providers specify default values for node/deployment attributes. (default: none)",
   :type        => "string",
   :required    => "optional"
+
+attribute "default_mailer/hostname",
+  :description => "Mail settings for outgoing alert messages (used by monit and possibly others)",
+  :required    => "optional",
+  :default     => "localhost"
+
+attribute "default_mailer/port",
+          :description => "Mail settings for outgoing alert messages (used by monit and possibly others)",
+          :required    => "optional",
+          :default     => "25"
+
+attribute "default_mailer/username",
+          :description => "Mail settings for outgoing alert messages (used by monit and possibly others)",
+          :required    => "optional",
+          :default     => "nil"
+
+attribute "default_mailer/password",
+          :description => "Mail settings for outgoing alert messages (used by monit and possibly others)",
+          :required    => "optional",
+          :default     => "nil"
+
+attribute "default_mailer/from",
+          :description => "Mail settings for outgoing alert messages (used by monit and possibly others)",
+          :required    => "optional",
+          :default     => "alerts@$HOST"
+
+attribute "default_mailer/alert_address",
+          :description => "EMail address to receive alerts (monit and others). Defaults to nil (disables alert emails)",
+          :required    => "optional",
+          :default     => "nil"

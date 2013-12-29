@@ -5,6 +5,17 @@ For usage of this cookbook, see Amoeba Deploy Tools (ADT)'s readme at:
 
 http://github.com/AmoebaConsulting/amoeba-deploy-tools
 
+## Note:
+
+If you use this cookbook, you must be sure to include monit, locale, and rvm from Githubg by adding
+the following to your `Cheffile`:
+
+```
+cookbook 'locale',  github: 'fnordfish/chef-locale'
+cookbook 'rvm',     github: 'fnichol/chef-rvm'
+cookbook 'monit',   github: 'phlipper/chef-monit'
+```
+
 ## Detailed Information
 
 This is a special "basenode" Cookbook for use with amoeba-deploy-tools. It configures minimalist

@@ -13,8 +13,7 @@ node.default['authorization']['sudo']['users'] = [ node.deployment.user ]
 
 node.override['authorization']['sudo']['agent_forwarding'] = true
 node.override['authorization']['sudo']['include_sudoers_d'] = true
-node.override['monit']['poll_period'] = 30
-node.override['monit']['poll_start_delay'] = false
+
 node.override['build_essential']['compiletime'] = true
 
 node.override['openssh']['client']['hash_known_hosts'] = 'yes'
