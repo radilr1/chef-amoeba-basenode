@@ -30,5 +30,5 @@ override["monit"]["mail"] = {
 }
 override["monit"]["default_monitrc_configs"] = ["load", "ssh"]
 # Used by upstart script
-override[:monit][:bin_file] =  "/usr/sbin/monit"
+override[:monit][:bin_file] =  "/usr/bin/monit"
 override[:monit][:monitrc_file] = "/etc/monit/monitrc"
