@@ -2,7 +2,7 @@ default['default_mailer']['hostname'] = 'localhost'
 default['default_mailer']['port'] = '25'
 default['default_mailer']['username'] = nil
 default['default_mailer']['password'] = nil
-default['default_mailer']['from'] = "alerts@#{node[:name]}"
+default['default_mailer']['from'] = "alerts@#{node[:fqdn]}"
 default['default_mailer']['alert_address'] = nil
 
 

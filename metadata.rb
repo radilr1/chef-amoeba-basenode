@@ -62,7 +62,7 @@ attribute "default_mailer/password",
 attribute "default_mailer/from",
           :description => "Mail settings for outgoing alert messages (used by monit and possibly others)",
           :required    => "optional",
-          :default     => "alerts@$HOST"
+          :default     => "alerts@#{node[:fqdn]}"
 
 attribute "default_mailer/alert_address",
           :description => "EMail address to receive alerts (monit and others). Defaults to nil (disables alert emails)",
