@@ -1,0 +1,1 @@
+default[:swap_file] = 1024 # Size in MB
