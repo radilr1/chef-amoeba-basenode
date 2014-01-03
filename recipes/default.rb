@@ -16,6 +16,6 @@ node[:packages].map{ |p| package p}
 chef_gem 'chef-rewind'
 
 # NOTE: dump MUST be the last action taken by this cookbook
-%w( deployer monit dump ).each do |r|
+%w( deployer monit ssl dump ).each do |r|
   include_recipe "amoeba_basenode::#{r}"
 end
