@@ -5,7 +5,7 @@ node.default['deployment']['group'] = 'deploy'
 node.default['deployment']['home']  = '/home/deploy'
 
 node.default['tz'] = 'UTC'
-node.default['packages'] = %w(htop atop screen imagemagick vim)
+node.default['packages'] = %w(htop atop screen imagemagick vim ssl-cert)
 node.default['apt_update'] = true
 node.default['ssl_certs'] = []
 
