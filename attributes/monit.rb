@@ -4,6 +4,7 @@ default['default_mailer']['username'] = nil
 default['default_mailer']['password'] = nil
 default['default_mailer']['from'] = "alerts@#{node[:fqdn]}"
 default['default_mailer']['alert_address'] = nil
+default['default_mailer']['security'] = nil
 
 
 # Now, override settings in the monit recipe:
@@ -23,6 +24,7 @@ override["monit"]["mail"] = {
   :port     => node['default_mailer']['port'],
   :username => node['default_mailer']['username'],
   :password => node['default_mailer']['password'],
+  :security => node['default_mailer']['security'],
   :from     => node['default_mailer']['from'],
   :subject  => "$SERVICE $EVENT at $DATE",
   :message  => "Monit $ACTION $SERVICE at $DATE on $HOST,\n\n$DESCRIPTION\n\nDutifully,\nMonit",
