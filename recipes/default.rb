@@ -1,5 +1,5 @@
 # These packages are *always* installed (system ruby for sysadmin tasks)
-%w( ohai locale timezone-ii hostname build-essential git sudo rvm::system openssh ).map do |r|
+%w( ohai locale timezone-ii hostname build-essential git sudo openssh ).map do |r|
   include_recipe r
 end
 

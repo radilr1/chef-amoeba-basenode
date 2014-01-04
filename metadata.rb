@@ -21,7 +21,6 @@ depends "hostname"
 depends "build-essential"
 depends "git"
 depends "sudo"
-depends "rvm", ">= 0.9.1" # must use version from github: 'fnichol/chef-rvm'
 depends "monit", ">= 1.5.0" # must use version from github: 'phlipper/chef-monit'
 
 attribute "swapfile_size",

@@ -12,7 +12,6 @@ the following to your `Cheffile`:
 
 ```
 cookbook 'locale',  github: 'fnordfish/chef-locale'
-cookbook 'rvm',     github: 'fnichol/chef-rvm'
 cookbook 'monit',   github: 'phlipper/chef-monit'
 ```
 
