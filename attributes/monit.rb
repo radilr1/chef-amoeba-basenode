@@ -26,7 +26,7 @@ override["monit"]["mail"] = {
   :password => node['default_mailer']['password'],
   :security => node['default_mailer']['security'],
   :from     => node['default_mailer']['from'],
-  :subject  => "$SERVICE $EVENT at $DATE",
+  :subject  => "#{node['name']}: $SERVICE $EVENT at $DATE",
   :message  => "Monit $ACTION $SERVICE at $DATE on $HOST,\n\n$DESCRIPTION\n\nDutifully,\nMonit",
   :timeout  => 30
 }
