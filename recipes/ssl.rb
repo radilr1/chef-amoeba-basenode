@@ -21,7 +21,6 @@ if node[:ssl_certs].length > 0
 end
 
 node[:ssl_certs].each do |cert_name|
-  log "CheckingCERT: #{cert_name}!"
   certificates  = Chef::EncryptedDataBagItem.load("certs", cert_name, node[:private_key_raw])
   cert = certificates[:cert]
   cert = cert.chomp + "\n" if cert
