@@ -4,7 +4,7 @@ maintainer_email "sayhi@amoe.ba"
 license          "MIT"
 description      "Configures basic system-level stuff for use woth Amoeba Deploy Tools."
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.0.4"
+version          "0.0.5"
 
 recipe            "amoeba_basenode", "Basic functionality needed for AmoebaDeployTools (deployer user and node config JSON dump)"
 recipe            "amoeba_basenode::swap", "Configures a swapfile on the node (based on swapfile_size attribute)"
