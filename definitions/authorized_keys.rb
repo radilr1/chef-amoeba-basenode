@@ -19,12 +19,12 @@ define :authorized_keys, user: nil, env: "development", home: nil do
     puts(env)
     puts(data_bag_item('authorized_keys', user_name)['environments'].inspect)
     puts(data_bag_item('authorized_keys', user_name)['environments'][env].inspect)
-    pubkeys += data_bag_item('authorized_keys', user_name)['environments'][env]
+    pubkeys += data_bag_item('authorized_keys', user_name)['environments'][env].split("\n")
   end
 
   # 'root' keys are applied to all users, not just for root
   if user_name != 'root' and key_users.include? 'root' && data_bag_item('authorized_keys', 'root')['environments'][app.name]
-    pubkeys += data_bag_item('authorized_keys', 'root')['environments'][app.name]
+    pubkeys += data_bag_item('authorized_keys', 'root')['environments'][app.name].split("\n")
   end
 
   pubkey_file = "#{ssh_dir}/id_rsa.pub"
