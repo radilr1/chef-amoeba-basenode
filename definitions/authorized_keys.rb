@@ -1,6 +1,7 @@
-define :authorized_keys, user: nil, home: nil do
-  user_name   = params[:user]   || params[:name]
-  user_home   = params[:home]   || "/home/#{user_name}"
+define :authorized_keys, user: nil, env: "development", home: nil do
+  user_name   = params[:user] || params[:name]
+  user_home   = params[:home] || "/home/#{user_name}"
+  env         = params[:env]
 
   ssh_dir = "#{user_home}/.ssh"
 
@@ -13,13 +14,13 @@ define :authorized_keys, user: nil, home: nil do
   # load authorized_keys data_bag for password-less login
   pubkeys = []
   key_users = data_bag 'authorized_keys'
-  if key_users.include? user_name
-    pubkeys += data_bag_item('authorized_keys', user_name)['keys']
+  if key_users.include? user_name && data_bag_item('authorized_keys', user_name).include?(env)
+    pubkeys += data_bag_item('authorized_keys', user_name)[env]
   end
 
   # 'root' keys are applied to all users, not just for root
   if user_name != 'root' and key_users.include? 'root'
-    pubkeys += data_bag_item('authorized_keys', 'root')['keys']
+    pubkeys += data_bag_item('authorized_keys', 'root')[app.name]
   end
 
   pubkey_file = "#{ssh_dir}/id_rsa.pub"
