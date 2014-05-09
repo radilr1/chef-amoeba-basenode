@@ -1,6 +1,7 @@
-define :authorized_keys, user: nil, home: nil do
-  user_name   = params[:user]   || params[:name]
-  user_home   = params[:home]   || "/home/#{user_name}"
+define :authorized_keys, user: nil, env: "development", home: nil do
+  user_name   = params[:user] || params[:name]
+  user_home   = params[:home] || "/home/#{user_name}"
+  env         = params[:env]
 
   ssh_dir = "#{user_home}/.ssh"
 
@@ -14,12 +15,12 @@ define :authorized_keys, user: nil, home: nil do
   pubkeys = []
   key_users = data_bag 'authorized_keys'
   if key_users.include? user_name
-    pubkeys += data_bag_item('authorized_keys', user_name)['keys']
+    pubkeys += data_bag_item('authorized_keys', user_name)['environments'][env].split("\n")
   end
 
   # 'root' keys are applied to all users, not just for root
   if user_name != 'root' and key_users.include? 'root'
-    pubkeys += data_bag_item('authorized_keys', 'root')['keys']
+    pubkeys += data_bag_item('authorized_keys', 'root')['environments'][app.name].split("\n")
   end
 
   pubkey_file = "#{ssh_dir}/id_rsa.pub"
