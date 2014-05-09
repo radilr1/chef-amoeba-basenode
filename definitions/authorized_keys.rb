@@ -14,16 +14,14 @@ define :authorized_keys, user: nil, env: "development", home: nil do
   # load authorized_keys data_bag for password-less login
   pubkeys = []
   key_users = data_bag 'authorized_keys'
-  puts(user_name)
-  puts(key_users)
-  if key_users.include? user_name && data_bag_item('authorized_keys', user_name)
+  if key_users.include? user_name && data_bag_item('authorized_keys', user_name)['environments'][env]
     pubkeys += data_bag_item('authorized_keys', user_name)['environments'][env].split("\n")
   end
 
   # 'root' keys are applied to all users, not just for root
   if user_name != 'root' and key_users.include? 'root'
     #&& data_bag_item('authorized_keys', 'root')['environments'][app.name]
-    abort(data_bag_item('authorized_keys', 'root')['environments'])
+    puts(data_bag_item('authorized_keys', 'root')['environments'])
     pubkeys += data_bag_item('authorized_keys', 'root')['environments'][app.name].split("\n")
   end
 
