@@ -14,7 +14,9 @@ define :authorized_keys, user: nil, env: "development", home: nil do
   # load authorized_keys data_bag for password-less login
   pubkeys = []
   key_users = data_bag 'authorized_keys'
-  if key_users.include? user_name && data_bag_item('authorized_keys', user_name)[env]
+  if key_users.include? user_name
+    abort(data_bag_item('authorized_keys', user_name).inspect)
+    #data_bag_item('authorized_keys', user_name)[env]
     pubkeys += data_bag_item('authorized_keys', user_name)[env]
   end
 
