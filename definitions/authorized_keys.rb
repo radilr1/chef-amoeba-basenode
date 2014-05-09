@@ -15,14 +15,14 @@ define :authorized_keys, user: nil, env: "development", home: nil do
   pubkeys = []
   key_users = data_bag 'authorized_keys'
   if key_users.include? user_name
-    abort(data_bag_item('authorized_keys', user_name).inspect)
-    #data_bag_item('authorized_keys', user_name)[env]
+    abort(data_bag_item('authorized_keys', user_name)['environments'].inspect)
+    #data_bag_item('authorized_keys', user_name)['environments']
     pubkeys += data_bag_item('authorized_keys', user_name)[env]
   end
 
   # 'root' keys are applied to all users, not just for root
-  if user_name != 'root' and key_users.include? 'root' && data_bag_item('authorized_keys', 'root')[app.name]
-    pubkeys += data_bag_item('authorized_keys', 'root')[app.name]
+  if user_name != 'root' and key_users.include? 'root' && data_bag_item('authorized_keys', 'root')['environments'][app.name]
+    pubkeys += data_bag_item('authorized_keys', 'root')['environments'][app.name]
   end
 
   pubkey_file = "#{ssh_dir}/id_rsa.pub"
