@@ -20,7 +20,7 @@ define :authorized_keys, user: nil, env: "development", home: nil do
 
   # 'root' keys are applied to all users, not just for root
   if user_name != 'root' and key_users.include? 'root'
-    pubkeys += data_bag_item('authorized_keys', 'root')['environments'][env].split("\n")
+    pubkeys += data_bag_item('authorized_keys', 'root')['environments'][node[:application][:name]].split("\n")
   end
 
   pubkey_file = "#{ssh_dir}/id_rsa.pub"
