@@ -38,6 +38,11 @@ attribute "deployment/provider",
   :type        => "string",
   :required    => "optional"
 
+attribute "application/name",
+  :description => "The user which will be added for the webapp. (default: none)",
+  :type        => "string",
+  :required    => "optional"
+
 attribute "default_mailer/hostname",
   :description => "Mail settings for outgoing alert messages (used by monit and possibly others)",
   :required    => "optional",
