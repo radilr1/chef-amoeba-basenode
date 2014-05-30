@@ -15,7 +15,8 @@ define :authorized_keys, user: nil, env: "development", home: nil do
   pubkeys = []
   key_users = data_bag 'authorized_keys'
   if key_users.include? user_name
-    pubkeys += data_bag_item('authorized_keys', user_name)['environments'][env].split("\n")
+    pub_keys_str = data_bag_item('authorized_keys', user_name)['environments'][env]
+    pubkeys += pub_keys_str.split("\n") if pub_keys_str
   end
 
   # 'root' keys are applied to all users, not just for root
