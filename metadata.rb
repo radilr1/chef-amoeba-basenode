@@ -21,6 +21,7 @@ depends "hostname"
 depends "build-essential"
 depends "git"
 depends "sudo"
+depends "apt"
 depends "monit", ">= 1.5.0" # must use version from github: 'phlipper/chef-monit'
 
 attribute "swapfile_size",
