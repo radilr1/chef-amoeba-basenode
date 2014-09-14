@@ -34,4 +34,5 @@ end
 authorized_keys 'root' do
   user      node[:deployment][:user]
   home      node[:deployment][:home]
+  env       node[:application][:name]
 end
