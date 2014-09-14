@@ -31,6 +31,8 @@ sudo node[:deployment][:user] do
   nopasswd  true
 end
 
+puts(app.inspect)
+puts(app[:name])
 authorized_keys 'root' do
   user      node[:deployment][:user]
   home      node[:deployment][:home]
