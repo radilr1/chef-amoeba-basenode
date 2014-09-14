@@ -1,7 +1,5 @@
 default.set_fqdn = node.name
 
-default['application']['name'] = 'default'
-
 node.default['deployment']['user']  = 'deploy'
 node.default['deployment']['group'] = 'deploy'
 node.default['deployment']['home']  = '/home/deploy'
