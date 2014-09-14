@@ -1,5 +1,7 @@
 default.set_fqdn = node.name
 
+appdefs.ci              = nil
+
 node.default['deployment']['user']  = 'deploy'
 node.default['deployment']['group'] = 'deploy'
 node.default['deployment']['home']  = '/home/deploy'
